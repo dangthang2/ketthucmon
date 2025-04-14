@@ -69,6 +69,8 @@ Route::get('/donhang/{id}', [PageController::class, 'showOrderDetail'])->name('d
 Route::get('/don-hang', [PageController::class, 'showOrders'])->name('donhang');
 
 Route::get('/danhmuc/{id}', [PageController::class, 'showByCategory'])->name('byCategory');
+Route::post('/checkout', [PageController::class, 'submitCheckout'])->name('checkout.submit');
+
 
 
 
@@ -77,11 +79,12 @@ Route::get('/lien-he', [PageController::class, 'showForm'])->name('lienhe.form')
 Route::post('/lien-he', [PageController::class, 'submitForm'])->name('lienhe.submit');
 
 
-Route::get('/checkout/{id}', [PageController::class, 'form'])->name('checkout.form');
-Route::post('/checkout/submit', [PageController::class, 'submit'])->name('checkout.submit');
-
 Route::get('/checkout/{id}', [PageController::class, 'showCheckoutForm'])->name('checkout.form');
 Route::post('/checkout', [PageController::class, 'submitCheckout'])->name('checkout.submit');
+Route::get('/checkout/thankyou', [PageController::class, 'thankYou'])->name('thankyou');
+
+
+
 
 Route::prefix('giohang')->group(function () {
     Route::get('/', [PageController::class, 'showCart'])->name('giohang'); // Hiển thị giỏ hàng
@@ -90,6 +93,7 @@ Route::prefix('giohang')->group(function () {
     Route::post('/clear', [PageController::class, 'clearCart'])->name('giohang.clear'); // Xóa toàn bộ giỏ hàng
     Route::post('/update', [PageController::class, 'updateCart'])->name('giohang.update'); // Cập nhật giỏ hàng
 });
+
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');

@@ -14,7 +14,6 @@
         </div>
     @endif
 
-    {{-- Thông tin sản phẩm --}}
     <h2>Đặt hàng: {{ $product->ten_giay }}</h2>
     <p><strong>Giá:</strong> {{ number_format($product->gia) }} đồng</p>
     <p><strong>Mô tả:</strong> {{ $product->mo_ta }}</p>
@@ -22,7 +21,6 @@
     {{-- Form đặt hàng --}}
     <form action="{{ route('checkout.submit') }}" method="POST">
         @csrf
-
         <input type="hidden" name="product_id" value="{{ $product->id }}">
 
         <div class="form-group">

@@ -94,7 +94,8 @@
             </form>
 
             <!-- Nút đặt hàng -->
-            <a href="{{ route('checkout.form', $sanpham->id) }}" class="btn btn-success">Đặt hàng</a>
+            <a href="{{ route('checkout.form') }}" class="btn btn-success">Đặt hàng</a>
+
 
         @endif
     </div>
