@@ -94,7 +94,12 @@
             </form>
 
             <!-- Nút đặt hàng -->
-            <a href="{{ route('checkout.form') }}" class="btn btn-success">Đặt hàng</a>
+            @if(Auth::check())
+    <a href="{{ route('checkout.form', ['id' => Auth::user()->id]) }}" class="btn btn-success">Đặt hàng</a>
+@else
+    <a href="{{ route('login') }}" class="btn btn-danger">Đăng nhập để đặt hàng</a>
+@endif
+
 
 
         @endif

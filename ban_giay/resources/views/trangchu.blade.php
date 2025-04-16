@@ -64,14 +64,17 @@
                     </div>
 
                     <form action="{{ route('dat-hang', ['id' => $item->id]) }}" method="GET" style="margin-top: 5px;">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $item->id }}">
-                        <input type="hidden" name="product_name" value="{{ $item->ten_giay }}">
-                        <input type="hidden" name="product_price" value="{{ $item->gia }}">
-                        <a href="{{ route('checkout.form', $item->id) }}" class="btn btn-success">mua ngay</a>
+    @csrf
+    <input type="hidden" name="product_id" value="{{ $item->id }}">
+    <input type="hidden" name="product_name" value="{{ $item->ten_giay }}">
+    <input type="hidden" name="product_price" value="{{ $item->gia }}">
 
-
-                    </form>
+    @if(Auth::check())
+        <a href="{{ route('checkout.form', $item->id) }}" class="btn btn-success">Mua ngay</a>
+    @else
+        <a href="{{ route('login') }}" class="btn btn-warning">Đăng nhập để mua hàng</a>
+    @endif
+</form>
                 </div>
             </div>
 

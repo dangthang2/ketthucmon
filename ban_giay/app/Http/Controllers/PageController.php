@@ -137,4 +137,22 @@ class PageController extends Controller
         LienHe::create($request->only('ten', 'email', 'sodienthoai', 'noidung'));
         return redirect()->back()->with('success', 'Cảm ơn bạn đã liên hệ!');
     }
+    public function removeItem($id)
+    {
+        $cart = session()->get('cart');
+        if ($cart && isset($cart->items[$id])) {
+            unset($cart->items[$id]);
+
+            // Nếu còn sản phẩm thì cập nhật lại, nếu không thì xoá toàn bộ session cart
+            if (count($cart->items) > 0) {
+                session()->put('cart', $cart);
+            } else {
+                session()->forget('cart');
+            }
+
+            return redirect()->back()->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng');
+        }
+
+        return redirect()->back()->with('error', 'Không tìm thấy sản phẩm trong giỏ');
+    }
 }

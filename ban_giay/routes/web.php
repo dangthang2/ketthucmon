@@ -81,9 +81,9 @@ Route::post('/lien-he', [PageController::class, 'submitForm'])->name('lienhe.sub
 
 Route::get('/checkout/{id}', [PageController::class, 'showCheckoutForm'])->name('checkout.form');
 Route::post('/checkout', [PageController::class, 'submitCheckout'])->name('checkout.submit');
-Route::get('/checkout/thankyou', [PageController::class, 'thankYou'])->name('thankyou');
 
-
+Route::get('/thankyou', [PageController::class, 'thankYou'])->name('thankyou');
+Route::get('/xoagiohang/{id}', [PageController::class, 'removeItem'])->name('banhang.xoagiohang');
 
 
 Route::prefix('giohang')->group(function () {

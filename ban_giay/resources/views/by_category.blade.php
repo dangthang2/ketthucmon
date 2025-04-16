@@ -11,7 +11,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->ten_giay }}</h5>
                         <p class="card-text">{{ number_format($product->gia, 0, ',', '.') }} VNĐ</p>
-                        <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                        <a class="beta-btn primary" href="{{ route('chitietgiay', $product->id) }}">
+                            Chi tiết <i class="fa fa-chevron-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
